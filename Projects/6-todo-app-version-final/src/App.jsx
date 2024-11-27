@@ -3,6 +3,7 @@ import { useState } from "react";
 import AppName from "./components/AppName";
 import "./App.css";
 import TodoItem from "./components/TodoItem";
+import WelcomeMessage from "./components/WelcomeMessage";
 function App() {
   const [todoList, setTodolist] = useState([
     { name: "Buy Milk", dueDate: "4/10/2023" },
@@ -23,6 +24,7 @@ function App() {
       <AppName />
       <div className="items-container">
         <AddTodo onNewItem={onNewItem} />
+        {todoList.length == 0 && <WelcomeMessage />}
         {todoList.map((todoItem, index) => (
           <TodoItem
             key={index}
