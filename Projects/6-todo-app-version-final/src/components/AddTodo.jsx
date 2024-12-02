@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdAdd } from "react-icons/md";
 import styles from "./AddTodo.module.css";
 function AddTodo({ onNewItem }) {
   const [todo, setTodo] = useState("");
@@ -40,7 +41,7 @@ function AddTodo({ onNewItem }) {
             className={`btn btn-success ${styles["kg-button"]}  `}
             onClick={handleAddClick}
           >
-            Add
+            Add <MdAdd />
           </button>
         </div>
       </div>

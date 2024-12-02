@@ -6,8 +6,8 @@ import TodoItem from "./components/TodoItem";
 import WelcomeMessage from "./components/WelcomeMessage";
 function App() {
   const [todoList, setTodolist] = useState([
-    { name: "Buy Milk", dueDate: "4/10/2023" },
-    { name: "Goto College", dueDate: "4/10/2023" },
+    { name: "Buy Milk", dueDate: "2024-12-04" },
+    { name: "Goto College", dueDate: "2024-12-04" },
   ]);
   const onNewItem = (todo, dueDate) => {
     const newTodo = [
@@ -19,6 +19,10 @@ function App() {
     ];
     setTodolist(newTodo);
   };
+  const handleOnClick = (name) => {
+    const updateTodolist = todoList.filter((todo) => todo.name !== name);
+    setTodolist(updateTodolist);
+  };
   return (
     <center className="todo-container">
       <AppName />
@@ -26,12 +30,7 @@ function App() {
         <AddTodo onNewItem={onNewItem} />
         {todoList.length == 0 && <WelcomeMessage />}
         {todoList.map((todoItem, index) => (
-          <TodoItem
-            key={index}
-            {...todoItem}
-            setTodolist={setTodolist}
-            todoList={todoList}
-          />
+          <TodoItem key={index} {...todoItem} handleOnClick={handleOnClick} />
         ))}
       </div>
     </center>
